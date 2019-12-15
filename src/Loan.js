@@ -1,11 +1,28 @@
 import React, { Component } from 'react';
 import './Loan.css';
-import {Row, Container, Form, Col} from 'react-bootstrap';
+import {Row, Container, Button, Form, FormControl, InputGroup, Col} from 'react-bootstrap';
+
+
+console.log("hi");
+
 
 class Loan extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {}
+    this.handleKeyPress = this.handleKeyPress.bind(this);
+  }
+
+  handleKeyPress = (event) => {
+    console.log(event, event.key)
+    if (event.key ==='Enter') {
+    }
+    console.log("handleChange")
+  }
+
   render() {
     return(
-      <div className="App">
+      <div className="Loan">
         <Container>
           <Row>
             <Col>
@@ -13,36 +30,47 @@ class Loan extends Component {
             </Col>
           </Row>
           <Row>
-          <Form>
-            <Form.Group as={Row} controlID="formPlaintextPrincipleBalance">
-              <Form.Label column sm="2">
-                Principle Balance
-              </Form.Label>
-              <Col sm="10">
-                <Form.Control type="word" placeholder="Principle Balance"/>
-              </Col>
-            </Form.Group>
-          </Form>
-          <Form>
-            <Form.Group as={Row} controlID="formPlaintextInterestRate">
-              <Form.Label column sm="2">
-                Interest Rate
-              </Form.Label>
-              <Col sm="10">
-                <Form.Control type="word" placeholder="Interest Rate"/>
-              </Col>
-            </Form.Group>
-          </Form>
-          <Form>
-              <Form.Group as={Row} controlID="formPlaintextMinMonthlyPayment">
-              <Form.Label column sm="2">
-                Minimum Monthly Payment
-            </Form.Label>
-              <Col sm="10">
-                <Form.Control type="word" placeholder="Minimum Monthly Payment"/>
-              </Col>
-              </Form.Group>
-          </Form>
+            <InputGroup className="mb-3">
+              <InputGroup.Prepend>
+                <InputGroup.Text
+                  id="inputGroup-sizing-default">Principle Balance</InputGroup.Text>
+              </InputGroup.Prepend>
+              <FormControl
+                aria-label="formPrincipleBalance"
+                aria-describedby="inputGroup-sizing-default"
+                type="text"
+                placeholder="10,000"
+                onKeyPress={this.handleKeyPress.bind(this)}
+               />
+             </InputGroup>
+          </Row>
+          <Row>
+            <InputGroup className="mb-3">
+              <InputGroup.Prepend>
+                <InputGroup.Text id="inputGroup-sizing-default">Interest Rate</InputGroup.Text>
+              </InputGroup.Prepend>
+              <FormControl
+                aria-label="formInterestRate"
+                aria-describedby="inputGroup-sizing-default"
+                type="text"
+                placeholder="5.00%"
+                onKeyPress={this.handleKeyPress.bind(this)}
+              />
+            </InputGroup>
+          </Row>
+          <Row>
+            <InputGroup className="mb-3">
+              <InputGroup.Prepend>
+                <InputGroup.Text id="inputGroup-sizing-default">Minimum Monthly Payment</InputGroup.Text>
+              </InputGroup.Prepend>
+              <FormControl
+                aria-label="formMinMonthlyPayment"
+                aria-describedby="inputGroup-sizing-default"
+                type="text"
+                placeholder="$50.00"
+                onKeyPress={this.handleKeyPress.bind(this)}
+              />
+            </InputGroup>
           </Row>
         </Container>
       </div>
